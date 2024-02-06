@@ -4,7 +4,7 @@ This is a general-purpose documentation collection to support software, data, an
 
 ## GETTING STARTED
 
-```Every software has customers: mainteners and end-users. Make them(you) happy!```
+```Every software has customers: owners, mainteners and end-users. Make them(you) happy!```
 
 Documentation is any communicable material that is used to describe, explain and instruct about a system or procedure: components, assembly, installation, maintenance and use.
 
@@ -37,7 +37,7 @@ This general documentation is organized per each technology or technique in the 
 * [Roadmaps](https://roadmap.sh/)
 * [Stack Overflow Community](https://stackoverflow.com/)
 * [W3 Schools](https://www.w3schools.com/)
-* [YouTube](https://www.youtube.com/)
+* [YouTube Channels](https://www.youtube.com/)
 
 # LICENSE
 

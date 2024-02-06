@@ -1,4 +1,0 @@
-# POWERSHELL FOR BEGINEERS: *
-
-```shell
-```
