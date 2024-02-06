@@ -1,4 +1,4 @@
-# link: https://learn.microsoft.com/en-us/powershell/scripting/install/install-ubuntu?view=powershell-7.4
+# link: https://learn.microsoft.com/en-us/powershell/scripting/install/install-ubuntu
 
 FROM ubuntu:latest AS BUILDER
 
