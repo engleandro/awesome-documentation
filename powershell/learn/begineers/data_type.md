@@ -1,6 +1,6 @@
 # POWERSHELL: DATA TYPE
 
-
+Powershell has many data type. All those data type are based on .NET data objects.
 
 ```shell
 # powershell has all .NET types.
