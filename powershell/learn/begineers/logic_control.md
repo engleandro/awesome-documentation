@@ -25,17 +25,6 @@ if ( $index -eq 1 ) {
 } else {
     Write-Host "Any"
 };
-
-```
-
-## PRE-CONDITIONAL LOGIC CONTROL: WHILE-DO
-
-```shell
-$count = 1
-
-while ( $count -lt 10 ) {$count = $count + 1};
-
-Write-Host $count
 ```
 
 # SWITCH
