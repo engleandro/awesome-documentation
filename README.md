@@ -1,2 +1,44 @@
-# awesome-documentation
-A general-purpose documentation collection to support software, data and AI solutions development.
+# AWESOME DOCUMENTATION
+
+This is a general-purpose documentation collection to support software, data, and AI solution development.
+
+## GETTING STARTED
+
+```Every software has customers: mainteners and end-users. Make them(you) happy!```
+
+Documentation is any communicable material that is used to describe, explain and instruct about a system or procedure: components, assembly, installation, maintenance and use.
+
+A good documentation is the key to success. It helps:
+* the mainteners to understand/keep the technical solution,
+* the end-users to understand/employ the product.
+
+The best practices on documenting:
+1. Standize the processes, artifacts and tools.
+2. To document is to communicate. Communication is an empathy act: be clear, direct, concise, consistent and context-oriented.
+3. It is a living artifact, it must be updated and maintained.
+4. It is a team responsability, not only the technical writers.
+5. It is a key part of the product, it must be treated as a first importance.
+6. It must be integrated into the development/product life cycle.
+7. Quality assurance process requires good standarization (DEFINE/STANDARIZE > MEASURE > CONTROL > MANAGE > CHECK/ACT).
+8. On user experience, information and support are keys to the user's success.
+
+This general documentation is organized per each technology or technique in the following sections:
+* Folder `docs`: contains the general documentations.
+* Folder `learn`: contains the learning resources.
+* Folder `artifacts`: contains the files and templates artifacts.
+* Folder `tools`: contains the tools and utilities.
+
+# ADDITIONAL RESOURCES
+
+* [DevDocs](https://devdocs.io/) e [DevHints](https://devhints.io/)
+* [GitHub Community](https://github.com/)
+* [Microsoft Community](https://learn.microsoft.com/)
+* [MIT Open Learning Library](https://openlearning.mit.edu/) and [Harvard Free Courses](https://pll.harvard.edu/catalog/free) 
+* [Roadmaps](https://roadmap.sh/)
+* [Stack Overflow Community](https://stackoverflow.com/)
+* [W3 Schools](https://www.w3schools.com/)
+* [YouTube](https://www.youtube.com/)
+
+# LICENSE
+
+Copyright (c) 2024 to Mímir Company. All rights reserved.
