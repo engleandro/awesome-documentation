@@ -18,6 +18,8 @@ It helps:
 * the mainteners to understand/keep the technical solution,
 * the end-users to understand/employ the product.
 
+### BEST PRACTICES
+
 The best practices on documentation development and management:
 
 1. Standize the processes, artifacts and tools.
@@ -28,6 +30,8 @@ The best practices on documentation development and management:
 6. It must be integrated into the development/product life cycle.
 7. Quality assurance process requires good standarization (DEFINE/STANDARIZE > MEASURE > CONTROL > MANAGE > CHECK/ACT).
 8. On user experience, information and support are keys to the user's success.
+
+### ORGANIZATION
 
 This general documentation is organized per each technology or technique in the following sections:
 
