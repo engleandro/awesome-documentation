@@ -4,15 +4,22 @@ This is a general-purpose documentation collection to support software, data, an
 
 ## GETTING STARTED
 
-```Every software has customers: owners, mainteners and end-users. Make them(you) happy!```
+```Every software has customers: owners, mainteners and end-users. Make them (and you in the future too) happy!```
 
 Documentation is any communicable material that is used to describe, explain and instruct about a system or procedure: components, assembly, installation, maintenance and use.
 
-A good documentation is the key to success. It helps:
+A good documentation is the key to success. We recommend the Kanban Principles:
+
+`Control service delivery through (clear and concise) policies (and let this easy to access with the process or product ideally)`
+
+It helps:
+
+* the owners to achieve their goals,
 * the mainteners to understand/keep the technical solution,
 * the end-users to understand/employ the product.
 
-The best practices on documenting:
+The best practices on documentation development and management:
+
 1. Standize the processes, artifacts and tools.
 2. To document is to communicate. Communication is an empathy act: be clear, direct, concise, consistent and context-oriented.
 3. It is a living artifact, it must be updated and maintained.
@@ -23,6 +30,7 @@ The best practices on documenting:
 8. On user experience, information and support are keys to the user's success.
 
 This general documentation is organized per each technology or technique in the following sections:
+
 * Folder `docs`: contains the general documentations.
 * Folder `learn`: contains the learning resources.
 * Folder `artifacts`: contains the files and templates artifacts.
@@ -41,4 +49,4 @@ This general documentation is organized per each technology or technique in the 
 
 # LICENSE
 
-Copyright (c) 2024 to Mímir Company. All rights reserved.
+Copyright (c) 2024 to Mímir Company.

@@ -1,4 +1,4 @@
-# link: https://learn.microsoft.com/en-us/powershell/scripting/install/install-ubuntu?view=powershell-7.4
+# check this link before: https://learn.microsoft.com/en-us/powershell/scripting/install/install-ubuntu
 
 # Prerequisites
 
