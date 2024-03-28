@@ -1,13 +1,13 @@
 # POWERSHELL: CROSS-PLATFORM TASK AUTOMATION (MICROSOFT) SOLUTION
 
-## SOURCES
+![powershell](./artifacts/microsoft-powershell.png)
+
+## REFERENCES
 * [Microsoft Powershell Documentation](https://learn.microsoft.com/en-us/powershell/)
 * [Microsoft Powershell Training](https://learn.microsoft.com/en-us/training/modules/introduction-to-powershell/)
 * [Microsoft .NET](https://learn.microsoft.com/en-us/dotnet/)
 * [Microsoft PowerShell Desired State Configuration (DSC)](https://learn.microsoft.com/en-us/powershell/scripting/dsc/overview/dscforengineers)
 * [Microsoft Learn Modules](https://learn.microsoft.com/en-us/training/browse/?terms=PowerShell)
-
----
 
 ## GETTING STARTED
 
