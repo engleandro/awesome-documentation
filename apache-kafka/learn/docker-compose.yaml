@@ -1,0 +1,122 @@
+# >> docker compose up -d
+
+volumes:
+  connectors:
+  kafka:
+  zookeeper:
+
+services:
+  
+  zookeeper:
+    image: docker.io/bitnami/zookeeper:3.9
+    restart: unless-stopped
+    ports:
+      - "2181:2181"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    volumes:
+      - "./zookeeper:/bitnami"
+  
+  kafka:
+    image: docker.io/bitnami/kafka:3.7.0
+    restart: unless-stopped
+    depends_on:
+      - zookeeper
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_BROKER_ID=0
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
+      - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://localhost:9093
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
+    ports:
+      - "9092:9093"
+    volumes:
+      - "./kafka:/bitnami"
+  
+  kafka-schema-registry:
+    image: confluentinc/cp-schema-registry:7.6.1
+    hostname: kafka-schema-registry
+    container_name: kafka-schema-registry
+    depends_on:
+      - zookeeper
+      - kafka
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: kafka-schema-registry
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: PLAINTEXT://kafka:9092
+      SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
+    ports:
+      - "8081:8081"
+  
+  kafka-rest-proxy:
+    image: confluentinc/cp-kafka-rest:7.6.1
+    hostname: kafka-rest-proxy
+    container_name: kafka-rest-proxy
+    depends_on:
+      - zookeeper
+      - kafka
+      - kafka-schema-registry
+    environment:
+      KAFKA_REST_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_REST_LISTENERS: http://0.0.0.0:8082/
+      KAFKA_REST_SCHEMA_REGISTRY_URL: http://kafka-schema-registry:8081/
+      KAFKA_REST_HOST_NAME: kafka-rest-proxy
+      KAFKA_REST_BOOTSTRAP_SERVERS: PLAINTEXT://kafka:9092
+    ports:
+      - "8082:8082"
+  
+  kafka-connect:
+    image: confluentinc/cp-kafka-connect:7.6.1
+    hostname: kafka-connect
+    container_name: kafka-connect
+    ports:
+      - "8083:8083"
+    environment:
+      CONNECT_BOOTSTRAP_SERVERS: 'kafka:9092'
+      CONNECT_REST_PORT: 8083
+      CONNECT_GROUP_ID: compose-connect-group
+      CONNECT_CONFIG_STORAGE_TOPIC: docker-connect-configs
+      CONNECT_OFFSET_STORAGE_TOPIC: docker-connect-offsets
+      CONNECT_STATUS_STORAGE_TOPIC: docker-connect-status
+      CONNECT_KEY_CONVERTER: io.confluent.connect.avro.AvroConverter
+      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: 'http://kafka-schema-registry:8081'
+      CONNECT_VALUE_CONVERTER: io.confluent.connect.avro.AvroConverter
+      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: 'http://kafka-schema-registry:8081'
+      CONNECT_INTERNAL_KEY_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
+      CONNECT_INTERNAL_VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
+      CONNECT_REST_ADVERTISED_HOST_NAME: "kafka-connect"
+      CONNECT_LOG4J_ROOT_LOGLEVEL: "INFO"
+      CONNECT_LOG4J_LOGGERS: "org.apache.kafka.connect.runtime.rest=WARN,org.reflections=ERROR"
+      CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: "1"
+      CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: "1"
+      CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: "1"
+      CONNECT_PLUGIN_PATH: '/usr/share/java,/etc/kafka-connect/jars,/usr/share/confluent-hub-components'
+    volumes:
+      - ./connectors:/etc/kafka-connect/jars/
+    depends_on:
+      - zookeeper
+      - kafka
+      - kafka-schema-registry
+      - kafka-rest-proxy
+    command:
+      - bash
+      - -c
+      - |
+        confluent-hub install --no-prompt debezium/debezium-connector-mysql:latest
+        confluent-hub install --no-prompt confluentinc/kafka-connect-datagen:0.4.0
+        /etc/confluent/docker/run
+  
+  ksqldb-server:
+    image: confluentinc/cp-ksqldb-server:7.6.1
+    hostname: ksqldb-server
+    container_name: ksqldb-server
+    depends_on:
+      - zookeeper
+      - kafka
+    environment:
+      KSQL_BOOTSTRAP_SERVERS: PLAINTEXT://kafka:9092
+      KSQL_LISTENERS: http://0.0.0.0:8088/
+      KSQL_KSQL_SERVICE_ID: ksqldb-server_
+    ports:
+      - "8088:8088"

@@ -1,0 +1,30 @@
+# >> docker compose up -d --scale spark-worker=3
+
+volumes:
+  lake:
+
+services:
+  
+  spark-master:
+    image: spark:3.5.1-python3
+    hostname: spark-master
+    depends_on:
+      - kafka
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    volumes:
+      - ./lake:/opt/workspace
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master --ip spark-master --port 7077 --webui-port 8080
+
+  spark-worker:
+    image: spark:3.5.1-python3
+    restart: unless-stopped
+    environment:
+      SPARK_WORKER_CORES: 2
+      SPARK_WORKER_MEMORY: 1024m
+    depends_on:
+      - spark-master
+    volumes:
+      - ./lake:/opt/workspace
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077

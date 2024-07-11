@@ -1,0 +1,11 @@
+// link: https://github.com/terraform-linters/tflint/blob/master/docs/user-guide/config.md
+
+plugin "aws" {
+    enabled = true
+    version = "0.21.0"
+    source  = "github.com/terraform-linters/tflint-ruleset-aws"
+}
+
+config {
+  module = true
+}
