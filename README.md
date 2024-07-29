@@ -4,7 +4,7 @@ This is a general-purpose documentation collection to support software, data, an
 
 ## GETTING STARTED
 
-```Every software has customers: owners, mainteners and end-users. Make them (and you in the future too) happy!```
+```Every software has customers: owners, maintainers and end-users. Make them (and you in the future too) happy!```
 
 Documentation is any communicable material that is used to describe, explain and instruct about a system or procedure: components, assembly, installation, maintenance and use.
 
